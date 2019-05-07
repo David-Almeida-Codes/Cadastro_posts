@@ -38,6 +38,14 @@ const Post = require('./models/Post')
 		})
 	})
 
+	app.get('/deletar/:id', (req, res)=>{
+		Post.destroy({where: {'id': req.params.id}}).then(()=>{
+			res.send('Post deletado com sucesso')
+		}).catch((error)=>{
+			res.send('esta msg nao existe')
+		})
+	})
+
 
 app.listen(3000, ()=>{
 	console.log('Server is running on: http://localhost:3000')
